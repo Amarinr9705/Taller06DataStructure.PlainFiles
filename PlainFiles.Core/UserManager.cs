@@ -75,21 +75,6 @@ public class UserManager
         }
     }
 
-    public void UnblockUser(string username)
-    {
-        var user = _users.FirstOrDefault(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
-        if (user != null)
-        {
-            user.IsActive = true;
-            SaveUsers();
-        }
-    }
-
-    public List<User> GetAllUsers()
-    {
-        return _users.ToList();
-    }
-
     private void SaveUsers()
     {
         var lines = _users.Select(u => $"{u.Username},{u.Password},{u.IsActive}");
